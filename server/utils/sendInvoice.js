@@ -1,5 +1,5 @@
-const nodemailer =
-  require("nodemailer");
+const sendEmail = require("../utils/sendEmail");
+
 
 const PDFDocument =
   require("pdfkit");
@@ -558,116 +558,32 @@ await new Promise(
 /* =========================
    EMAIL TRANSPORT
 ========================= */
+console.log("STEP 4: Sending Email via Brevo API");
 
-console.log("STEP 1: sendInvoice started");
-
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port:   587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-});
-
-console.log("STEP 2: transporter created");
-
-await transporter.verify();
-
-console.log("STEP 3: SMTP Connected Successfully");
-/* =========================
-   SEND EMAIL
-========================= */
-console.log("STEP 4: Sending Email");
-await transporter.sendMail({
-
-  from:
-    process.env.EMAIL_USER,
-
-  to:
-    order.email,
-
-  subject:
-    "RentMojo Rental Invoice",
-
+const result = await sendEmail({
+  to: order.email,
+  subject: "RentMojo Rental Invoice",
   html: `
+    <div style="font-family:Arial;padding:20px">
+      <h2 style="color:#16a34a">Rental Booking Confirmed ✅</h2>
 
-    <div style="
-      font-family:Arial;
-      padding:20px;
-    ">
+      <p>Hi <b>${order.customerName}</b>,</p>
 
-      <h2 style="
-        color:#16a34a;
-      ">
-        Rental Booking Confirmed ✅
-      </h2>
+      <p>Your booking is confirmed.</p>
 
-      <p>
-        Hello
-        <b>
-          ${order.customerName}
-        </b>,
-      </p>
+      <p><b>Invoice ID:</b> ${order._id}</p>
+      <p><b>Total:</b> ₹${order.totalPrice}</p>
 
-      <p>
-        Your rental booking has been confirmed successfully.
-      </p>
-
-      <p>
-        <b>Invoice ID:</b>
-        ${order._id}
-      </p>
-
-      <p>
-        <b>Delivery Date:</b>
-        ${new Date(
-          order.deliveryDate
-        ).toLocaleDateString()}
-      </p>
-
-      <p>
-        <b>Order Status:</b>
-        ${order.status}
-      </p>
-
-      <p>
-        <b>Total Amount:</b>
-        ₹${order.totalPrice}
-      </p>
-
-      <p>
-        Please find the premium invoice attached with this email.
-      </p>
-
-      <hr/>
-
-      <p>
-        Thank you for choosing RentMojo ❤️
-      </p>
-
+      <p>Thanks for choosing RentMojo ❤️</p>
     </div>
-
   `,
-
-  attachments: [
-
-    {
-
-      filename:
-        `invoice-${order._id}.pdf`,
-
-      path:
-        invoicePath,
-
-    },
-
-  ],
-
+  attachment: {
+    filename: `invoice-${order._id}.pdf`,
+    path: invoicePath,
+  },
 });
+console.log("BREVO RESPONSE SENT ✔️", result);
+console.log("EMAIL SENT SUCCESSFULLY ✅");
 
 console.log(
   "Premium Invoice Sent Successfully ✅"
