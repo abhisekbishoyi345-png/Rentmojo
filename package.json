@@ -16,6 +16,7 @@
     "qrcode": "^1.5.4",
     "react-router-dom": "^7.15.1",
     "react-toastify": "^11.1.0",
-    "recharts": "^3.8.1"
+    "recharts": "^3.8.1",
+    "sib-api-v3-sdk": "^8.5.0"
   }
 }
