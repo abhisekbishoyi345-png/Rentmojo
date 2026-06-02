@@ -636,7 +636,7 @@ console.log(
   "Order Saved ✅"
 );
 
-await sendInvoice(
+sendInvoice(
   newOrder
 );
 
