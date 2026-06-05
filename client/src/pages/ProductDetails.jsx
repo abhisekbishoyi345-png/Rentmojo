@@ -79,7 +79,7 @@ function ProductDetails() {
 
         const response =
           await axios.get(
-            `https://rentmojo-snqg.onrender.com/products/${id}`
+            `https://rentmojo-1.onrender.com/products/${id}`
           );
 
         setProduct(
@@ -107,7 +107,7 @@ function ProductDetails() {
 
         const response =
           await axios.get(
-            "https://rentmojo-snqg.onrender.com/products"
+            "https://rentmojo-1.onrender.com/products"
           );
 
         setProducts(
@@ -131,7 +131,7 @@ function ProductDetails() {
 
         const response =
           await axios.get(
-            `https://rentmojo-snqg.onrender.com/reviews/${id}`
+            `https://rentmojo-1.onrender.com/reviews/${id}`
           );
 
         setReviews(
@@ -223,7 +223,7 @@ function ProductDetails() {
       try {
 
         await axios.post(
-          "https://rentmojo-snqg.onrender.com/reviews",
+          "https://rentmojo-1.onrender.com/reviews",
           {
 
             productId: id,

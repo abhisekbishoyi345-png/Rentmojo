@@ -29,7 +29,7 @@ function Orders() {
         const response =
           await axios.get(
 
-            "https://rentmojo-snqg.onrender.com/orders",
+            "https://rentmojo-1.onrender.com/orders",
 
             {
 

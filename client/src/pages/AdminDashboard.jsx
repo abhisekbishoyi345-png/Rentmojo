@@ -94,7 +94,7 @@ function AdminDashboard() {
         const res =
           await axios.get(
 
-            "https://rentmojo-snqg.onrender.com/admin/analytics",
+            "https://rentmojo-1.onrender.com/admin/analytics",
 
             {
               headers: {
@@ -140,7 +140,7 @@ function AdminDashboard() {
         const response =
           await axios.get(
 
-           "https://rentmojo-snqg.onrender.com/admin/orders",
+           "https://rentmojo-1.onrender.com/admin/orders",
 
             {
               headers: {
@@ -181,7 +181,7 @@ function AdminDashboard() {
         const response =
           await axios.get(
 
-            "https://rentmojo-snqg.onrender.com/products"
+            "https://rentmojo-1.onrender.com/products"
 
           );
 
@@ -341,7 +341,7 @@ function AdminDashboard() {
   );
         await axios.delete(
 
-          `https://rentmojo-snqg.onrender.com/products/${id}`,
+          `https://rentmojo-1.onrender.com/products/${id}`,
 
           {
             headers: {
@@ -377,7 +377,7 @@ const updateStatus = async (
 
     await axios.put(
 
-      `https://rentmojo-snqg.onrender.com/admin/orders/${orderId}`,
+      `https://rentmojo-1.onrender.com/admin/orders/${orderId}`,
 
       { status }
 

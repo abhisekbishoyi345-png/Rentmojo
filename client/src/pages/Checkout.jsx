@@ -137,7 +137,7 @@ function Checkout() {
         const response =
           await axios.post(
 
-            "https://rentmojo-snqg.onrender.com/orders",
+            "https://rentmojo-1.onrender.com/orders",
 
             orderData,
 

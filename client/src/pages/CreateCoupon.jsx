@@ -49,7 +49,7 @@ function CreateCoupon() {
 
         await axios.post(
 
-          "https://rentmojo-snqg.onrender.com/coupons",
+          "https://rentmojo-1.onrender.com/coupons",
 
           coupon,
 

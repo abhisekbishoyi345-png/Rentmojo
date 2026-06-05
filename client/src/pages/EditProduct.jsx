@@ -61,7 +61,7 @@ function EditProduct() {
         const response =
           await axios.get(
 
-            `https://rentmojo-snqg.onrender.com/products/${id}`
+            `https://rentmojo-1.onrender.com/products/${id}`
 
           );
 
@@ -128,7 +128,7 @@ function EditProduct() {
         const response =
           await axios.post(
 
-            "https://rentmojo-snqg.onrender.com/upload",
+            "https://rentmojo-1.onrender.com/upload",
 
             imageData,
 
@@ -193,7 +193,7 @@ function EditProduct() {
 
         await axios.put(
 
-          `https://rentmojo-snqg.onrender.com/products/${id}`,
+          `https://rentmojo-1.onrender.com/products/${id}`,
 
           updatedData,
 

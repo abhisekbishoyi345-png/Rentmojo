@@ -125,7 +125,7 @@ function AddProduct() {
         const response =
           await axios.post(
 
-            "https://rentmojo-snqg.onrender.com/products",
+            "https://rentmojo-1.onrender.com/products",
 
             data,
 
