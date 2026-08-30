@@ -419,51 +419,25 @@ app.post(
    GET PRODUCTS
 ========================= */
 
-app.get(
+app.get("/products", async (req, res) => {
+  try {
+    const products = await Product.find().sort({
+      createdAt: -1,
+    });
 
-  "/products",
+    res.json({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log("Products Error =>", error.message);
 
-  async (req, res) => {
-
-    try {
-
-      const products =
-        await Product.find().sort({
-
-          createdAt: -1,
-
-        });
-
-      res.json({
-
-        success: true,
-
-        products,
-
-      });
-
-    } catch (error) {
-
-      console.log(
-        "Products Error =>",
-        error.message
-      );
-
-      res.status(500).json({
-
-        success: false,
-
-        message:
-          error.message,
-
-      });
-
-    }
-
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
-
-);
-
+});
 /* =========================
    ADD PRODUCT
 ========================= */
